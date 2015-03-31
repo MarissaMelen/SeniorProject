@@ -1,0 +1,67 @@
+#include "ListFrame.hpp"
+
+enum
+{
+	MON_NAME, 
+	MON_INDEX
+};
+
+ListFrame::ListFrame(MonsterFrame *l_f) {
+	//Set up a link to the MonsterManager and a link to the MonsterFrame to be able to retrieve monster information and to be able to edit the MonsterFrame's labels
+	l_frame = l_f;
+	ManagerFrameData *mf_data = new ManagerFrameData;
+	mf_data->l_f = l_f;
+
+	//Set up the list
+	list = gtk_tree_view_new();
+	gtk_tree_view_set_headers_visible(GTK_TREE_VIEW(list), FALSE);
+	
+	//Set up the frame	
+	r_frame = gtk_frame_new(NULL);
+	gtk_frame_set_shadow_type(GTK_FRAME(r_frame), GTK_SHADOW_ETCHED_IN);
+	r_grid = gtk_grid_new();
+	gtk_grid_set_row_spacing(GTK_GRID(r_grid), 5);
+	gtk_grid_set_column_spacing(GTK_GRID(r_grid), 5);
+
+	//Attach the list to the grid	
+	gtk_widget_set_vexpand(list, TRUE);
+	gtk_grid_attach(GTK_GRID(r_grid), list, 0, 0, 1, 1);
+
+	//Attach the grid to the frame
+	gtk_container_add(GTK_CONTAINER(r_frame), r_grid);
+
+	//Set up the tree view column
+	renderer = gtk_cell_renderer_text_new();
+	column = gtk_tree_view_column_new_with_attributes("List Items", renderer, "text", MON_NAME, "text", MON_INDEX, NULL); 
+	gtk_tree_view_append_column(GTK_TREE_VIEW(list), column);
+
+	//Generate list store
+	store = gtk_list_store_new(2, G_TYPE_STRING, G_TYPE_INT);
+	gtk_tree_view_set_model(GTK_TREE_VIEW(list), GTK_TREE_MODEL(store));
+	g_object_unref(store);
+	list_selection = gtk_tree_view_get_selection(GTK_TREE_VIEW(list));
+
+	//Connect event handlers
+	g_signal_connect(list_selection, "changed", G_CALLBACK(on_changed), (gpointer) mf_data);
+}
+
+void ListFrame::attach_to_grid(GtkWidget *grid, gint left, gint top, gint width, gint height) {
+	gtk_grid_attach(GTK_GRID(grid), r_frame, left, top, width, height);
+}
+
+void on_changed(GtkWidget *selection, gpointer manager_frame_data) {
+	ManagerFrameData *mf = (ManagerFrameData *)manager_frame_data;	
+	GtkTreeIter iter;
+	GtkTreeModel *model;
+	int monster_index;	
+	char *monster_name;
+
+	if (gtk_tree_selection_get_selected(GTK_TREE_SELECTION(selection), &model, &iter)) {
+		//Retrieve the monster's name and monster's index
+		gtk_tree_model_get(model, &iter, 0, &monster_name, 1, &monster_index, -1);
+		//Set the MonsterFrame's information
+		std::string name(monster_name);
+		monsterstate selected = mf->biomes[name][monster_index];
+		((MonsterFrame *)mf->l_f)->set_monster_data(selected);
+	}
+}

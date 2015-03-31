@@ -1,0 +1,222 @@
+//damage for swords, no pierce at high ranges, 99 is x3
+double swordDMG(int baseDMG, int roll, int monsterPWR, double elementMOD)
+{
+  double DMGdealt = 0;
+  if((30 <= roll)&&(roll <=39))
+    {
+      DMGdealt = ((baseDMG - monsterPWR)*elementMOD)*0.5;
+    }
+  else if((40 <= roll)&&(roll <= 80))
+    {
+      DMGdealt = ((baseDMG - monsterPWR)*elementMOD);
+    }
+  else if((81 <= roll)&&(roll <= 98))
+    {
+      DMGdealt = ((baseDMG - monsterPWR)*elementMOD)*2;
+    }
+  else if(roll >= 99)
+    {
+      DMGdealt = ((baseDMG - monsterPWR)*elementMOD)*3;
+    }
+  return DMGdealt;
+}
+
+//damage for spears, hits at lower values, pierce at 99
+double spearDMG(int baseDMG, int roll, int monsterDEF, int monsterPWR, double elementMOD)
+{
+  double DMGdealt = 0;
+  if((25 <= roll)&&(roll <= 39))
+    {
+      DMGdealt = ((baseDMG - monsterPWR)*elementMOD)*0.5;
+    }
+  else if((40 <= roll)&&(roll<= 80))
+    {
+      DMGdealt = ((baseDMG - monsterPWR)*elementMOD);
+    }
+  else if((81 <= roll)&&(roll <= 98))
+    {
+      DMGdealt = ((baseDMG - monsterPWR)*elementMOD)*2;
+    }
+  else if(roll >= 99)
+    {
+      DMGdealt = ((baseDMG - monsterDEF)*elementMOD)*2;
+    }
+  return DMGdealt;
+}
+
+//damage for axes, hits at higher ranges, 99 is x3
+double axeDMG(int baseDMG, int roll, int monsterPWR, double elementMOD)
+{
+  double DMGdealt = 0;
+  if((35 <= roll)&&(roll <= 44))
+    {
+      DMGdealt = ((baseDMG - monsterPWR)*elementMOD)*0.5;
+    }
+  else if((45 <= roll)&&(roll<= 80))
+    {
+      DMGdealt = ((baseDMG - monsterPWR)*elementMOD);
+    }
+  else if((81 <= roll)&&(roll<= 98))
+    {
+      DMGdealt = ((baseDMG - monsterPWR)*elementMOD)*2;
+    }
+  else if(roll >= 99)
+    {
+      DMGdealt = ((baseDMG - monsterPWR)*elementMOD)*3;
+    }
+  return DMGdealt;
+}
+
+//damage for fist/brawling weapons, normal hit rate, 99 is x2 with stun
+double fistDMG(int baseDMG, int roll, int monsterPWR, double elementMOD)
+{
+  double DMGdealt = 0;
+  if((30 <= roll)&&(roll<= 39))
+    {
+      DMGdealt = ((baseDMG - monsterPWR)*elementMOD)*0.5;
+    }
+  else if((40 <= roll)&&(roll<= 80))
+    {
+      DMGdealt = ((baseDMG - monsterPWR)*elementMOD);
+    }
+  else if((81 <= roll)&&(roll<= 98))
+    {
+      DMGdealt = ((baseDMG - monsterPWR)*elementMOD)*2;
+    }
+  else if(roll >= 99)
+    {
+      DMGdealt = ((baseDMG - monsterPWR)*elementMOD)*2;
+      //this will add "stun" to the monster
+    }
+  return DMGdealt;
+}
+
+//damage for regular bows, hits less, 99 is x3
+double bowDMG(int baseDMG, int roll, int monsterPWR, double elementMOD)
+{
+  double DMGdealt = 0;
+  if((40 <= roll)&&(roll<= 45))
+    {
+      DMGdealt = ((baseDMG - monsterPWR)*elementMOD)*0.5;
+    }
+  else if((46 <= roll)&&(roll<= 80))
+    {
+      DMGdealt = ((baseDMG - monsterPWR)*elementMOD);
+    }
+  else if((81 <= roll)&&(roll<= 98))
+    {
+      DMGdealt = ((baseDMG - monsterPWR)*elementMOD)*2;
+    }
+  else if(roll >= 99)
+    {
+      DMGdealt = ((baseDMG - monsterPWR)*elementMOD)*3;
+    }
+  return DMGdealt;
+}
+
+//damage for crossbows, hits less, 99 is x2 with pierce
+double crossbowDMG(int baseDMG, int roll, int monsterDEF, int monsterPWR, double elementMOD)
+{
+  double DMGdealt = 0;
+  if((40 <= roll)&&(roll<= 45))
+    {
+      DMGdealt = ((baseDMG - monsterPWR)*elementMOD)*0.5;
+    }
+  else if((46 <= roll)&&(roll<= 80))
+    {
+      DMGdealt = ((baseDMG - monsterPWR)*elementMOD);
+    }
+  else if((81 <= roll)&&(roll<= 98))
+    {
+      DMGdealt = ((baseDMG - monsterPWR)*elementMOD)*2;
+    }
+  else if(roll >= 99)
+    {
+      DMGdealt = ((baseDMG - monsterDEF)*elementMOD)*2;
+    }
+  return DMGdealt;
+}
+
+//damage for firearms, hits more, always pierce, no crit
+double firearmDMG(int baseDMG, int roll, int monsterDEF, double elementMOD)
+{
+  double DMGdealt = 0;
+  if(roll >= 30)
+    {
+      DMGdealt = ((baseDMG - monsterDEF)*elementMOD);
+    }
+  return DMGdealt;
+}
+
+//damage for non-mages using magic items, normal hits, 99 is x3, no element modifiers
+double nonmageDMG(int baseDMG, int roll, int monsterPWR)
+{
+  double DMGdealt = 0;
+  if((30 <= roll)&&(roll<= 39))
+    {
+      DMGdealt = (baseDMG - monsterPWR)*0.5;
+    }
+  else if((40 <= roll)&&(roll<= 80))
+    {
+      DMGdealt = (baseDMG - monsterPWR);
+    }
+  else if((81 <= roll)&&(roll<= 98))
+    {
+      DMGdealt = (baseDMG - monsterPWR)*2;
+    }
+  else if(roll >= 99)
+    {
+      DMGdealt = (baseDMG - monsterPWR)*3;
+    }
+  return DMGdealt;
+}
+
+
+//damage for knives is special, normal hit range, no pierce
+//critical hits get the cunning bonus used for calculation
+double knifeDMG(int baseDMG, int roll, int monsterPWR, double elementMOD, double cunningBNS)
+{
+  double DMGdealt = 0;
+  double CUN = cunningBNS/10;
+  if((30 <= roll)&&(roll<= 39))
+    {
+      DMGdealt = ((baseDMG - monsterPWR)*elementMOD)*0.5;
+    }
+  else if((40 <= roll)&&(roll<= 80))
+    {
+      DMGdealt = ((baseDMG - monsterPWR)*elementMOD);
+    }
+  else if((81 <= roll)&&(roll<= 98))
+    {
+      DMGdealt = ((baseDMG - monsterPWR)*elementMOD)*(2+CUN);
+    }
+  else if(roll >= 99)
+    {
+      DMGdealt = ((baseDMG - monsterPWR)*elementMOD)*(2*(2+CUN));
+    }
+  return DMGdealt;
+}
+
+//damage for magic user's quick-cast spells, these can miss
+//these go through resistance NOT defense, and always get an elemental modifier
+double quickcastDMG(int baseDMG, int roll, int monsterRES, double elementMOD)
+{
+  double DMGdealt = 0;
+  if(roll >= 30)
+    {
+      DMGdealt = ((baseDMG - monsterRES)*elementMOD);
+    }
+  return DMGdealt;
+}
+
+
+///////this is an experimental spot for making a custom attack generator
+//we need to know: the base damage, any elemental modifiers
+//if it pierces or otherwise alters opponent's STATS, only for the damage phase
+//also what the DMGmod is for this (x0.5, x1, x2, ect)
+double customDMG(int baseDMG, int monsterARM, int monsterDEF, int monsterRES, double elementMOD, double dmgMOD)
+{
+  double DMGdealt = 0;
+  DMGdealt = (((baseDMG - (monsterARM + monsterDEF + monsterRES))*elementMOD)*dmgMOD);
+  return DMGdealt;
+}

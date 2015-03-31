@@ -1,0 +1,65 @@
+Possible Issue:
+Movement in monster should be an int, not a double?
+
+------------------------------------------------
+
+ListFrame needs testing!!!!!
+
+------------------------------------------------
+
+Need to add a generate encounter button to ButtonFrame.
+Also the generate encounter function should possibly return an encounter_data struct that contains
+the encounter in addition to a vector of strings to provide easy access to the strings to store 
+in the list store.
+Probably the on_generate function will have a local vector<string> and will set its value to
+the output of generate(encounter). on_generate will receive monster_map from Window and will
+set the monster_map in main to the monster_map generated from generate_encounter.
+Then, on_generate will iterate monster_map[vector<string>[i]][j]
+and push "vector<string>[i], j+1" into the list store.
+Once all the strings and monster indices have been pushed into the list store, vector<string>
+will be unnecessary since the list store can be iterated through to obtain the list of monster
+types in the encounter.
+
+new notes:
+on_generate function will create a window with the entires for biome file location, and other
+encounter generation data. There will be a button on that window that actually calls
+the generateEncounter function. When that button is clicked, all the data from the entries
+will be pulled into a data structure and monsterReader will be used to pull in the monster data
+into the biome vector(std::vector<monster>) for usre by generateEncounter. Then, the output
+of generateEncounter will be used to store data into the list store as mentioned above
+
+ALSO NOTE: monster access through the map using the <name, index> pair from the list store will
+have to be decremented due to the list store counting from 1 for DM convenience.
+
+------------------------------------------------
+
+Attack Monster button brings up a new window with options of types of attack.
+They input the values into the entries and then click button to attack monster.
+This button will call damageMonster() which takes parameters:
+	attackType atk_type,
+	int baseDMG,
+	int monsterDEF, (the monster info will be pulled from a monsterstate)
+	int monsterARM,
+	int monsterRES
+	int roll (damage roll),
+	weaponType wpn_type
+	
+Attack panel/window that pops up has the following entries:
+
+baseDMG_entry
+element_dropdown_menu
+monsterDEF_entry (default value is the monster's DEF pulled from the monsterstate and displayed)
+monsterARM_entry (default value is from monsterstate)
+monsterRES_entry (default value is from monsterstate)
+
+note: empty entry handling will need to be had
+
+-----------------------------------------------
+
+MonsterFrame should have a notebook with two tabs, one is Monster Data and one is Edit Monster.
+Edit Monster tab should have a button labled "Update Monster" which will update the selected
+monster with new data.
+
+Currently MonsterFrame contains a MonsterTabs called *notebook. MonsterTabs will be a class
+that creates a GtkWidget notebook using gtk_notebook_new 
+(https://developer.gnome.org/gtk3/stable/GtkNotebook.html#gtk-notebook-new)

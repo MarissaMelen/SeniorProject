@@ -1,0 +1,95 @@
+//this is where the monster will be targeted
+//select a weapon and the switch will pick the correct function to use
+//most of these functions will be located in the damagemonster.cpp
+
+
+int roll = 0;
+int baseDMG = 0;
+int monsterARM = 0;
+int monsterDEF = 0;
+int monsterPWR = (monsterARM + monsterDEF);
+int monsterRES = 0;
+double elementMOD = 0;
+int DMGdealt = 0;
+int cunningBNS = 0;
+weapon weapontype;
+
+
+//this is for the custom damage function
+double defMOD = 0;
+double armMOD = 0;
+double resMOD = 0;
+double dmgMOD = 0;
+
+double damage(enum weapontype)
+{
+
+    switch (weapontype) {
+            //each of these will lead to a different weapon attack type
+//sword
+        case sword:
+            DMGdealt = swordDMG(baseDMG, roll, monsterPWR, elementMOD);
+            break;
+//spear
+        case spear:
+            DMGdealt = spearDMG(baseDMG, roll, monsterDEF, monsterPWR, elementMOD);
+            break;
+//axe
+        case axe:
+            DMGdealt = axeDMG(baseDMG, roll, monsterPWR, elementMOD);
+            break;
+//fist
+        case fist:
+            DMGdealt = fistDMG(baseDMG, roll, monsterPWR, elementMOD);
+            break;
+//bow
+        case bow:
+            DMGdealt = bowDMG(baseDMG, roll, monsterPWR, elementMOD);
+            break;
+//crossbow
+        case crossbow:
+            DMGdealt = crossbowDMG(baseDMG, roll, monsterDEF, monsterPWR, elementMOD)
+            break;
+//firearm
+        case firearm:
+            DMGdealt = firearmDMG(baseDMG, roll, monsterDEF, elementMOD);
+            break;
+//nonmage
+        case nonmage:
+            DMGdealt = nonmageDMG(baseDMG, roll, monsterPWR);
+            break;
+//knife
+        case knife:
+   //here we need to ask for their cunning bonus, this we will modify inside the funcion, don't worry
+            cout << "what is your cunning bonus? ";
+            cin >> cunningBNS;
+            DMGdealt = knifeDMG(baseDMG, roll, monsterPWR, elementMOD, cunningBNS);
+            break;
+//quickcast magic, this could also work for normal mage spells, 
+//just keep track of turns yourself
+        case quickcast:
+            DMGdealt = quickcastDMG(baseDMG, roll, monsterRES, elementMOD);
+            break;
+//custom damage & direct damage
+        case custom:
+   //we need them to input values for defMOD, armMOD, resMOD, and dmgMOD
+   //each will be a double, this is going to be for how many/much of the stats
+   //the attack goes through, any stat it goes through will be a non-zero
+   //however, if it bypasses a stat, then the user should set it to zero
+            cout << "How much armor? ";
+            cin >> armMOD;
+            cout << "How much defense? ";
+            cin >> defMOD;
+            cout << "How much resistance? ";
+            cin >> resMOD;
+            cout << "What is damage MOD? ";
+            cin >> dmgMOD;
+            monterARM = monsterARM*armMOD;
+            monsterDEF = monsterDEF*defMOD;
+            monsterRES = monsterRES*resMOD;
+            DMGdealt = customDMG(baseDMG, monsterARM, monsterDEF, monsterRES, elementMOD, dmgMOD);
+            break;
+        default:
+            cout << "please select a valid answer"<< endl;
+    }
+}

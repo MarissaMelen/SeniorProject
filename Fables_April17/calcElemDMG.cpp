@@ -1,0 +1,124 @@
+#include <iostream>
+#include "element.hpp"
+#include "calcElement.hpp"
+#include "attribute.hpp"
+using namespace std;
+
+istream & operator >> (istream &i, element &e)
+{
+  //read in elements
+    string input;
+    i >> input;
+    
+    //Make input lowercase
+    for (int j=0; j<input.size(); j++)
+    {
+        input[j] = tolower(input[j]);
+    }
+    
+    if (input == "fire")
+        e = fire;
+    else if (input == "ice")
+        e = ice;
+    else if (input == "nature")
+        e = nature;
+    else if (input == "earth")
+        e = earth;
+    else if (input == "wind")
+        e = wind;
+    else if (input == "spark")
+        e = spark;
+    else if (input == "water")
+        e = water;
+    else if (input == "light")
+        e = light;
+    else if (input == "dark")
+        e = dark;
+    else if (input == "null")
+        e = null;
+    else if (input == "void")
+        e = voidal;
+    else
+        e = none;
+    return i;
+}
+
+
+
+double checkElem(element atkElem1, element atkElem2, monster &mon)
+{
+  double totalElemMOD = 1;
+  double mod1, mod2;
+  mod1 = mod2 = 1;
+  element defElem1, defElem2;
+  attribute attr;
+  defElem1 = mon.element.first;
+  defElem2 = mon.element.second;
+  attr = mon.attribute;
+  //if the 1st def element is none, but the 2nd is not, swap them
+  if(defElem1 == none && defElem2 != none)
+    {
+      defElem1 = defElem2;
+      defElem2 = none;
+    }
+
+  //if the 1st atk element is none, but the 2nd is not, swap them
+  if(atkElem1 == none && atkElem2 != none)
+    {
+      atkElem1 = atkElem2;
+      atkElem2 = none;
+    }
+
+  //check for void type monsters
+  if(attr = voidal)
+    {
+      elemMod(atkElem1, attr);
+    }
+
+  //if the atkElem1 and defElem1 are both "none" that means there are no elements involved, return 1
+  if(atkElem1 == none && defElem1 == none)
+    {
+      totalElemMOD = 1;
+    }
+
+  //if atkElem2 and defElem2 are both "none", that means that there is nothing in the first slot
+  //there is only 1 to 1 elements, calc with 1 to 1
+  else if(atkElem2 == none && defElem2 == none)
+    {
+      totalElemMOD = elemMod(atkElem1, defElem1);
+    }
+
+  //if there is nothing in the second defending slot, there is 2 attacking to 1 defending
+  //calculate each attacking element against the defending element
+  //then multiply them together for final result
+  else if(defElem2 == none)
+    {
+      mod1 = elemMod(atkElem1, defElem1);
+      mod2 = elemMod(atkElem2, defElem1);
+      totalElemMOD = mod1*mod2;
+    }
+
+  //if there is nothing in the second attacking slot, there is 1 attacking to 2 defending
+  //calculate same as with 2 attack to 1 defend, but in reverse  
+  else if(atkElem2 == none)
+    {
+      mod1 = elemMod(atkElem1, defElem1);
+      mod2 = elemMod(atkElem1, defElem2);
+      totalElemMOD = mod1*mod2;
+    }
+
+  //this is for a two against two calculation
+  //check the first attack against the first defense
+  //check the second attack against the second defense
+  //then multiply results together, so YES, order would matter
+  //but that's the point
+  else if(atkElem1 != none && atkElem2 != none && defElem1 != none && defElem2 != none)
+    {
+      mod1 = elemMod(atkElem1, defElem1);
+      mod2 = elemMod(atkElem2, defElem2);
+
+      totalElemMOD = mod1*mod2;
+    }
+
+  return totalElemMOD;
+}

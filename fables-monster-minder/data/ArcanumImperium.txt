@@ -1,0 +1,8 @@
+#Biome
+#Name		Move	HP	MP	STR	DEF	ARM	INT	RES	Element1 Element2 Attribute
+Arcane_Warrior  4	5	2	3.7	2.4	1.3	0.5	1	Spark      None     None
+Arcane_Sniper  	5	5	2	3.3	1.9	0.9	0.2	0.8	Dark      None     None
+Arcane_Mage	3	4	7.4	2.6	1.4	1.2	3.5	3.9	Null	 None	  None
+Arcane_General  4	6	4.3	4.8	2.7	1.9	1.3	1.9	Light    None     None
+Arcane_Doll	3	10.5	4.3	4.9	3.5	2.5	2.4	3.7	Earth	 Spark	  None
+Scouting_Raven	7	3.4	4.7	2.9	1.9	0.4	2.1	2.1	Ice	 Wind	  Flying

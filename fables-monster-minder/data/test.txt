@@ -1,0 +1,7 @@
+#Biome
+#Name	Move	HP	MP	STR	DEF	ARM	INT	RES	Element1 Element2 Attribute
+Wolf 	5	5	2	2.2	0.5	1	0.5	1	Earth    None     None
+Rat  	3	2	2	1	0.1	0.5	0.2	0.1	Nature   None     Swamp
+Bat  	6	3	4	0.5	1	1	4	3	Spark    None     Dire
+Snake	7	4 	3	2	3	1.1	2.1	4  	Nature   None     None
+Dragon	6	12.5	8	5.3	2.5	1.5	4.2	2.3	Fire	 Wind	  Flying

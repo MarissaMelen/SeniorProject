@@ -1,0 +1,15 @@
+#include <gtk/gtk.h>
+#include "../MonsterManager/MonsterManager.hpp"
+#include "../GUI/Window.hpp"
+
+int main(int argc, char *argv[]) {
+	gtk_init(&argc, &argv);
+
+	MonsterManager *manager = new MonsterManager;
+	Window *window = new Window(manager);
+	window->show();
+
+	gtk_main();
+
+	return 0;
+}

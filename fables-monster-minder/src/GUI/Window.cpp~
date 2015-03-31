@@ -1,0 +1,32 @@
+#include "Window.hpp"
+
+Window::Window(MonsterManager *p) {
+	parent = p;
+
+	//Set up window widget
+	window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+	gtk_window_set_position(GTK_WINDOW(window), GTK_WIN_POS_CENTER);
+	gtk_window_set_default_size(GTK_WINDOW(window), 480, 480);
+	gtk_window_set_title(GTK_WINDOW(window), "Fables of Sylvus Monster Manager");
+
+	//Set up main grid
+	m_grid = gtk_grid_new();
+
+	//Set up other frames
+	l_frame = new MonsterFrame;
+	r_frame = new ListFrame(p, l_frame);
+	b_frame = new ButtonsFrame;
+
+	//Attach frames to the grid
+	l_frame->attach_to_grid(m_grid, 0, 0, 1, 1);
+	r_frame->attach_to_grid(m_grid, 1, 0, 1, 1);
+	b_frame->attach_to_grid(m_grid, 0, 1, 2, 1);
+
+	gtk_container_add(GTK_CONTAINER(window), m_grid);
+
+	g_signal_connect(window, "destroy", G_CALLBACK(gtk_main_quit), NULL);
+}
+
+void Window::show() {
+	gtk_widget_show_all(window);
+}

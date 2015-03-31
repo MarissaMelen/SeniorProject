@@ -1,0 +1,51 @@
+#include "ButtonsFrame.hpp"
+
+ButtonsFrame::ButtonsFrame(monster_map *m, ListFrame *r_f) {
+	//Set up a link to the monster data for convenience
+	monsters = m;
+	r_frame = r_f;
+
+	//Create frame and grid
+	b_frame = gtk_frame_new(NULL);
+	b_grid = gtk_grid_new();
+
+	//Set up buttons	
+	const char *button_labels[NUM_BUTTONS] = {"Attack Monster", "Edit Monster", "Next Turn"};
+	for (int i=0; i<NUM_BUTTONS; ++i) {
+		buttons[i] = gtk_button_new_with_label(button_labels[i]);
+		gtk_grid_attach(GTK_GRID(b_grid), buttons[i], i, 0, 1, 1);
+	}	
+
+	gtk_container_add(GTK_CONTAINER(b_frame), b_grid);
+
+	ButtonData *b_data = new ButtonData;
+	b_data->monsters = monsters;
+	b_data->r_f = r_frame;
+
+	g_signal_connect(buttons[0], "clicked", G_CALLBACK(on_attack_monster), (gpointer)b_data);
+	g_signal_connect(buttons[2], "clicked", G_CALLBACK(on_next_turn), (gpointer)b_data);
+}
+
+void ButtonsFrame::attach_to_grid(GtkWidget *grid, gint left, gint top, gint width, gint height) {
+	gtk_grid_attach(GTK_GRID(grid), b_frame, left, top, width, height);
+}
+
+void on_attack_monster(GtkWidget *button, gpointer data) {
+	//Bring up a new window with entries for damageMonster()
+	
+}
+
+void on_next_turn(GtkWidget *button, gpointer data) {
+	ButtonData *b_data = (ButtonData *)data;	
+	std::vector<std::string>> m_names;
+	
+	//Get monster names from data and push them into m_names
+
+	//Run status effects on each monster
+	for (unsigned int i=0; i<m_names.size(); ++i) {
+		passturn(b_data->monsters[m_names[i]]);
+	}
+
+	//Feedback that the turn has been passed and status effects have been applied for the current(new) turn
+
+}

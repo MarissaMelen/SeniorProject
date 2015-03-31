@@ -1,0 +1,40 @@
+gtk_tree_model_get_iter_first
+https://developer.gnome.org/gtk3/unstable//GtkTreeModel.html#gtk-tree-model-get-iter-first
+http://gtk.10911.n7.nabble.com/how-to-browse-values-from-a-GtkListStore-td5873.html
+scentric.net/tutorial/sec-treemodel-rowref.html
+
+ListStore iteration to retrieve unique monster names and their vectors
+Add monsterstate to ListStore in the form of string and vector index
+
+------------------------------------------------
+
+Attack Monster button brings up a new window with options of types of attack.
+They input the values into the entries and then click button to attack monster.
+This button will call damageMonster() which takes parameters:
+	attackType atk_type,
+	int baseDMG,
+	int monsterDEF, (the monster info will be pulled from a monsterstate)
+	int monsterARM,
+	int monsterRES
+	int roll (damage roll),
+	weaponType wpn_type
+	
+Attack panel/window that pops up has the following entries:
+
+baseDMG_entry
+element_dropdown_menu
+monsterDEF_entry (default value is the monster's DEF pulled from the monsterstate and displayed)
+monsterARM_entry (default value is from monsterstate)
+monsterRES_entry (default value is from monsterstate)
+
+note: empty entry handling will need to be had
+
+-----------------------------------------------
+
+MonsterFrame should have a notebook with two tabs, one is Monster Data and one is Edit Monster.
+Edit Monster tab should have a button labled "Update Monster" which will update the selected
+monster with new data.
+
+Currently MonsterFrame contains a MonsterTabs called *notebook. MonsterTabs will be a class
+that creates a GtkWidget notebook using gtk_notebook_new 
+(https://developer.gnome.org/gtk3/stable/GtkNotebook.html#gtk-notebook-new)

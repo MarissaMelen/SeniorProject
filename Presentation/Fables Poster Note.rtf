@@ -1,0 +1,42 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf190
+{\fonttbl\f0\froman\fcharset0 Times-Roman;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720
+
+\f0\fs24 \cf0 Here are my thoughts on the poster so far (a lot of it has to do with grammar and wording. Also feel free to change any of my suggestions):\
+\
+In the Introduction:\
+instead of using "instances of enemy units" maybe say "a group of monsters", since that's what an encounter is.\
+\
+Encounters...use many different variables. The base...\
+should be once sentence involving a list, not two sentences. "The base...stats of the monsters." is currently an incomplete sentence with no verb.\
+It should instead be "Encounters...use many different variables: the base..stats of the monsters."\
+Also I would suggest the wording to be:\
+"Combat in Fables involves many variables: the base...the monsters. Subsequently, the GM spends a large amount of time calculating to find the damage dealt to a monster by an attack."\
+\
+I think that the Objective section involves some rewriting to make it more fluid. I'm feeling some conflict in the tenses. "Wanted" is past-tense, but the way in which you used "needs" and "must" sound like you're talking about things to be done in the future. A way to make the paragraph sounds more cohesive is to indicate the end result of things that need to be done and then indicate how that's what we wanted our program to do. For example, instead of saying "This tool needs to handle...", which sounds like a prompt for a project, you could say "In order to help the GM save time and effort, the monster minder needed to..."\
+Also I think we need a better description for our encounters than "dynamic varied opponents" because that's a very vague description. Also dynamic is currently modifying varied, so if they're both modifying opponents, then the correct usage should be "dynamic, varied opponents". Dynamic opponents isn't something that our monster minder would be producing, though, unless you mean dynamic in that they can be edited? Or did you mean dynamic in that the monsters can be scaled? In that case you would probably be better off saying "varied opponents that can be scaled in difficulty to match the player party's strength" or something along those lines.\
+"monsters current state" should be "monster's current state"\
+This whole chunk of text mostly refers to the first paragraph.\
+\
+Also, I think you should pick a different word than scripting(first paragraph of Objective, "without having to spend hours designing..."). When I hear scripting, I think of something being given a script to execute, like in a play. The monster minder doesn't affect any sort of monster behavior so scripting wouldn't be the right word to use. I think "designing them by hand" is descriptive enough.\
+\
+For the second paragraph, I think that instead of "strength of encounter desired" maybe use "difficulty of the encounter". Also it should be "the party size, party level". Also a possible alternative to saying "a list of enemies..." is "a set of enemies..."\
+\
+In the third paragraph, "This would all be used..." should be replaced with "This would be used to...". It's more concise. Also, "loses", not "looses", and it should be "loses to an attack", not "looses in an attack". Also, that sentence should be split into two. e.g. "This would be used to determine how much health the monster loses to an attack. Once health drops below zero it is considered "dead" and is removed from the list of enemies". We don't need "must be". Also, as used to join two statements means that the first statement is reliant on the second. The two are unrelated statements. We want to be keeping track of health lost regardless of whether or not we keep track of monster death.\
+When talking about statuses, the "This too must be handled" sounds a little bit out of place, though I can't think of a better alternative.\
+I think the biggest reason why the mixing of "Wanted to" and "The program must" is that the paragraphs become a weird mix of our goals and the specifications of the program. I think that to keep it consistent, we either have the whole block of text be about our goals for the program, or have it be specifications of what the program should be. Or at least have them be separate chunks. So either begin with "We wanted to" and then continue with "To do so, our program had to do this and that", or something along those lines. The other way is to explain it as a process that we took, where we begin with "We wanted to" and then continue with "To do so, we did this and that".\
+\
+For the right side,\
+I don't know if we should be using programming jargon without explaining what the jargon is in an intuitive way, since I don't know who exactly will be seeing our poster. But we could easily solve the issue by not using the term "vector" without a complete description of what it is. So for example we could use the full name of the vector, which would be something like "STL Vector Container" or "Standard Template Library Vector Container". Or we could explain what a vector is in case people who don't know C++ very well see our poster, so we could say something "a vector (resizable array)" or "a vector container (resizable array)" and hope that the idea of an array is intuitive enough that people will know what we're talking about even if they're not C++ coders.\
+\
+Also, we should remove "with a custom algorithm" from the poster. The game's homebrew, so any way of leveling the monsters will be custom since the monster leveling system will be unique to the game and there isn't some other standard way to level the monster that we're deviating from.\
+\
+Also, the final monsters are stored into a list, not a vector. I also don't think the description "dynamic monster alteration"\'a0 is the best one. We should probably use "editing of monsters" or something. Dynamic is "(of a process or system) characterized by constant change, activity, or progress" which does not describe our system at all, since editing a monster does not produce constant change. Also "unique" is probably an extra adjective. We can probably just say "customized monsters" or "manually created monsters" or something like that.\
+\
+For the final outcome, we should include that our program can successfully generate an appropriately difficult encounter(I'm assuming that in your testing that the encounters are appropriately difficult? I don't know what an appropriately difficult encounter is in Fables). We can also say that the program can handle the application of damage to monsters and the removal of dead monsters from the list. The program also numbers each monster in the list so that the GM has an easier time keeping track of which monster on the field the monster in the list corresponds to.\
+Are we supposed to try to "talk up" our final outcome, or are we just reporting on finished features?\
+Also my stuff for final outcome is definitely just thoughts, so they need to be reworded into something concise and easy to read and present.\
+}

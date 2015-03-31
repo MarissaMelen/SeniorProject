@@ -1,0 +1,8 @@
+#Biome
+#Name			Move	HP	MP	STR	DEF	ARM	INT	RES	Element1 Element2 Attribute
+Nocturne_Soldier 	4	5	2	3.7	1.5	1.3	0.5	1	Earth      None     None
+Nocturne_Sniper  	5	5	2	3.3	0.9	0.9	0.2	0.8	Wind      None     None
+Nocturne_Mage		3	4	7.4	2.6	0.4	1.2	2.5	3.9	Fire	 None	  None
+Nocturne_General  	4	6	4.3	4.8	1.7	1.9	1.3	1.9	Dark     None     None
+Werewolf_Berserker	5	4 	8.5	6.1	3.4	1.0	1.1	0.9  	Nature   None     Were
+

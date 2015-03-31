@@ -1,0 +1,36 @@
+#ifndef BUTTONSFRAME_HPP
+#define BUTTONSFRAME_HPP
+
+#include <gtk/gtk.h>
+#include <vector>
+#include <string>
+#include <unordered_map>
+#include <../monsterstate.hpp>
+
+#define NUM_BUTTONS 2
+typedef std::unordered_map<std::string, std::vector<monsterstate>> monster_map
+
+void on_attack_monster(GtkWidget *button, gpointer data);
+void on_next_turn(GtkWidget *button, gpointer *data);
+
+struct ButtonData {
+	monster_map *monsters;	
+	ListFrame *r_f;
+}
+
+class ButtonsFrame {
+private:
+	GtkWidget *b_frame;
+	GtkWidget *b_grid;
+	GtkWidget *buttons[NUM_BUTTONS];
+	monster_map *monsters;
+	ListFrame *r_frame;
+
+public:
+	ButtonsFrame(monster_map *m, ListFrame *r_f);
+
+	void attach_to_grid(GtkWidget *grid, gint left, gint top, gint width, gint height);
+
+};
+
+#endif //BUTTONSFRAME_HPP

@@ -1,0 +1,9 @@
+#ifndef ATTRIBUTE_HPP
+#define ATTRIBUTE_HPP
+
+enum attribute{
+	dummy, 
+	dummy2
+};
+
+#endif //ATTRIBUTE_HPP

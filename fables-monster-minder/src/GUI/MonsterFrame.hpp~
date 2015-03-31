@@ -1,0 +1,22 @@
+#ifndef MONSTERFRAME_HPP
+#define MONSTERFRAME_HPP
+
+#include <vector>
+#include "../Monster/monsterstate.hpp"
+
+class MonsterFrame {
+private:
+	GtkWidget *l_frame;
+	GtkWidget *l_grid;
+	std::vector<GtkWidget *> labels;
+	std::vector<GtkWidget *> monster_data;
+
+public:
+	MonsterFrame();
+
+	void attach_to_grid(GtkWidget *grid, gint left, gint top, gint width, gint height);
+
+	void set_monster_data(monsterstate monster);
+};
+
+#endif //MONSTERFRAME_HPP

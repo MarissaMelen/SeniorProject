@@ -1,0 +1,26 @@
+#ifndef WINDOW_HPP
+#define WINDOW_HPP
+
+#include <gtk/gtk.h>
+#include "../MonsterManager/MonsterManager.hpp"
+#include "../Monster/monster.hpp"
+#include "MonsterFrame.hpp"
+#include "ListFrame.hpp"
+#include "ButtonsFrame.hpp"
+
+class Window {
+private:
+	MonsterManager *parent;
+	GtkWidget *window;
+	GtkWidget *m_grid;
+	MonsterFrame *l_frame;
+	ListFrame *r_frame;
+	ButtonsFrame *b_frame;
+
+public:
+	Window(MonsterManager *p);
+
+	void show();
+};
+
+#endif //WINDOW_HPP
