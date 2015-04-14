@@ -1,9 +1,9 @@
 # SeniorProject
-This project was creating during the Fall semester of 2013 and the Spring semester of 2014 at University of the Pacific
-It was created for University of the Pacific's Senior Project classes
-First place in the Computer Science senior project competition May 2014
+This project was creating during the Fall semester of 2013 and the Spring semester of 2014 at University of the Pacific.
 
-This code is being saved here for reference, other copies do exist and are probably in the possesion of my teammates.
+It was created for University of the Pacific's Senior Project class and won first place in the Computer Science senior project competition in May 2014
+
+This code is being saved here for reference, other copies do exist and are probably in the possession of my teammates.
 
 Projecy Name:
 Sylvia's Monster Minder
