@@ -18,6 +18,7 @@ It allows for complete creation and management of random monster encounters
  - monsters can be dynamically edited as needed
  - custom monsters can be created and added during battles
  - Simple GUI for ease of use
+ 
  This version was compiled on my Macintosh OSX 10.9.5
  
 Fables of Sylvia (c)TM is a property of Twilight Enigma Studios and was created on commission for the owners of the product
