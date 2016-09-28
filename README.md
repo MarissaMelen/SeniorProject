@@ -5,13 +5,9 @@ It was created for University of the Pacific's Senior Project class and won firs
 
 This code is being saved here for reference, other copies do exist and are probably in the possession of my teammates.
 
-Projecy Name:
-Sylvia's Monster Minder
+Project Name: Sylvia's Monster Minder
 
-Team Members:
-Marissa Melen
-Victor Aw
-Rose Nish
+Team Members: Marissa Melen, Victor Aw, Rose Nish
 
 Sylvia's Monster Minder was created as a Game Master's tool and assistant 
 for the table top role playing game Fables of Sylvia (c)TM
